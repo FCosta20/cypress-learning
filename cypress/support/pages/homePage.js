@@ -5,6 +5,11 @@ class HomePage {
         cy.contains('Login').click()
     }
 
+    navigateToRegistrationPage() {
+        cy.get('.dropdown-login #dropdownCurrency').click()
+        cy.contains('Sign Up').click()
+    }
+
     startChatWithUser(name, whatsUpNumber, email) {
         cy.get('#chat-widget-container iframe').then($iframe => {
             const $body = $iframe.contents().find('body')

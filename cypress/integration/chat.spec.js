@@ -21,10 +21,10 @@ describe('Chat suite', () => {
     });
 
     it('should be sent a message to chat', () => {
-        homePage.startChatWithUser(user.firstName, user.whatsUpNumber, user.email)
+        homePage.startChatWithUser(user.firstName, user.phoneNumber, user.email)
         homePage.showMoreInfoAboutUserInChat()
         homePage.getChatUserName().should('contain', user.firstName)
-        homePage.getChatUserWhatsAppNumber().should('contain', user.whatsUpNumber)
+        homePage.getChatUserWhatsAppNumber().should('contain', user.phoneNumber)
         homePage.getChatUserEmail().should('contain', user.email)
         homePage.sendMessageToChat('Hi, bot')
         homePage.getLastSentMessageFromChat().should('contain', 'Hi, bot')
