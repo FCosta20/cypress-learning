@@ -1,3 +1,5 @@
+import { get } from "cypress/types/jquery"
+import { groupBy } from "cypress/types/lodash"
 
 class ChatBot{
 
@@ -11,10 +13,9 @@ class ChatBot{
             getBody().find('#name').type(name)
             getBody().contains('WhatsApp Number').should('be.visible').type(phone)
             getBody().find('#email').type(email)
-            getBody().contains('Are you existing client?').click()
-            getBody().find('select').click()
-            getBody().find('option').contains('No').click()
+            getBody().find('select').select('No')
             getBody().find('button').contains('Start the chat').click()
+            getBody().find('div').contains('Name:').should('contains', name)
         })
             
     }

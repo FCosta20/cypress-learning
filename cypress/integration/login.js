@@ -21,7 +21,6 @@ describe('Tests for login', () => {
     it('Login with correct credentials', () => {
         loginPage.logInUser(data.email, data.password)
         cy.contains('Hi, Kateryna Buchkovska').should('be.visible')
-        homePage.logOut()
     })
 
     it('Login with incorrect password', () => {

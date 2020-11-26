@@ -6,9 +6,9 @@ class HomePage{
         cy.contains('Login').click()
     }
 
-    logOut(){
-        cy.get('.dropdown-login').click()
-        cy.contains('Logout').click()
+    openSignUpPage(){
+        cy.contains('div', 'My Account').click()
+        cy.contains('Sign Up').click()
     }
 }
 
