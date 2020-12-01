@@ -6,6 +6,10 @@ class LoginPage {
         cy.get('button').contains('Login').click()
     }
 
+    getErrorMessage() {
+        return cy.get('#loginfrm .alert-danger')
+    }
+
 }
 
 export const loginPage = new LoginPage()

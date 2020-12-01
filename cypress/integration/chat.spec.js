@@ -29,6 +29,7 @@ describe('Chat suite', () => {
         homePage.sendMessageToChat('Hi, bot')
         homePage.getLastSentMessageFromChat().should('contain', 'Hi, bot')
         homePage.getLastSentMessageStatusFromChat().should('contain', 'Delivered')
+        homePage.closeTheChat(true)
     })
 
 })

@@ -24,7 +24,7 @@ describe('Login suite', () => {
         accountPage.getGreetingElement().should('contain',  `Hi, ${user.firstName} ${user.lastName}`)
     })
 
-    it.only('should not be registered with different passwords', () => {
+    it('should not be registered with different passwords', () => {
         homePage.navigateToRegistrationPage()
         registrationPage.register(user.firstName, user.lastName, user.phoneNumber, user.email, user.password, user.wrongPassword)
         registrationPage.getErrorMessage().should('contain',  'Password not matching with confirm password')
