@@ -81,6 +81,7 @@ class HomePage {
     getLastSentMessageFromChat() {
         return cy.get('#chat-widget-container iframe').then($iframe => {
             const $body = $iframe.contents().find('body')
+            // get last sent message from the chat
             return cy.wrap($body).find('.lc-142muc0.eovu8nx0').last().find('span')
         })
     }
