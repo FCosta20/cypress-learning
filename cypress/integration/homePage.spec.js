@@ -18,16 +18,26 @@ describe('login and register suite', ()=>{
     })
 
 
-    it.only('should login user',()=>{
+    it('REGISTER USER', ()=>{
+        // click on 'my account' button and choose 'log in' from dropdown menu
         onHomePage.goToLoginPage() 
-        onLoginPage.logIn(user.email, user.password)
-        onAccountPage.findMyName().should('be.visible').and('contain', `Hi, ${user.first_name} ${user.last_name}`)    })
-
-    it('should registrate new user', ()=>{
-        onHomePage.goToLoginPage() 
-        cy.get('.zoomInDown > :nth-child(1) > .btn').click()
+        //find and click on the sign up button
+        cy.get('.btn').parents('.zoomInDown').contains('Sign Up').click()
+        // fill in all required field
         onRegisterPage.signUpPage(user.first_name,user.last_name,user.mobile_phone,user.email,user.password)
-        onAccountPage.findMyName().should('be.visible').and('contain', `Hi, ${user.first_name} ${user.llast_name}`)
+        // asssertion to check if user are directed to account page
+        onAccountPage.findMyName().should('be.visible').and('contain', `Hi, ${user.first_name} ${user.last_name}`)
+        // back to home page from account page
         onAccountPage.backToHomePage()
     })
+
+    it('LOGIN USER',()=>{
+        // click on 'my account' button and choose 'log in' from dropdown menu
+        onHomePage.goToLoginPage()
+        // on login page fill in required fields
+        onLoginPage.logIn(user.email, user.password)
+        // asssertion to check if user are directed to account page
+        onAccountPage.findMyName().should('be.visible').and('contain', `Hi, ${user.first_name} ${user.last_name}`)    
+    })
+
 })
