@@ -1,6 +1,7 @@
 
 class SignUp{
 
+    //fill all the fields to register user
     signUpUser(firstName, lastName, phone, email, password){
         cy.contains('span', 'First Name').type(firstName)
         cy.contains('span', 'Last Name').type(lastName)
