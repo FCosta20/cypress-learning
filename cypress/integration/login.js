@@ -2,16 +2,25 @@
 
 const { homePage } = require("../support/page_objects/homePage")
 const { loginPage } = require("../support/page_objects/loginPage")
+const { signUp } = require("../support/page_objects/signUp")
 
 describe('Tests for login', () => {
 
-    //variable for using data from fixtures
-    let data = {}
+    //variable for using data from loginCredentials fixture
+    let login = {}
 
-    //take data from loginCredentials fixture
+    //variable for using data from signUpUserInfo fixture
+    let signUp = {}
+
+    
     before(() => {
+        //take data from loginCredentials fixture
         cy.fixture('loginCredentials').then((loginCredentials) => {
-            data = loginCredentials;
+            login = loginCredentials;
+        })
+        //take data from signUpUserInfo fixture
+        cy.fixture('signUpUserInfo').then((signUpUserInfo) => {
+            signUp = signUpUserInfo;
         })
     })
 
@@ -21,15 +30,16 @@ describe('Tests for login', () => {
     })
 
     it('Login with correct credentials', () => {
-        loginPage.logInUser(data.email, data.password)
+        loginPage.logInUser(login.email, login.password)
         cy.get('.text-align-left').then(label => {
-            expect(label.text()).to.equal('Hi, ' + data.firstName + ' ' + data.lastName)
+            expect(label.text()).to.equal('Hi, ' + signUp.firstName + ' ' + signUp.lastName)
         })
     })
 
     it('Login with incorrect password', () => {
-        loginPage.logInUser(data.email, data.incorrectPassword)
-        cy.get('.resultlogin').should('contain', 'Invalid')
+        loginPage.logInUser(login.email, login.incorrectPassword)
+        cy.get('.resultlogin')
+          .should('contain', 'Invalid')
     })
 
 })
