@@ -2,8 +2,13 @@
 class HomePage{
 
     goToLoginPage() {
-        cy.get('ul>li').eq(2).click()
-        cy.get('.dropdown-menu').parent('div').find('.active').click()
+        cy.get('ul>li')
+            .eq(2)
+            .click()
+        cy.get('.dropdown-menu')
+            .parent('div')
+            .find('.active')
+            .click()
     }
 
     
@@ -19,26 +24,54 @@ class ChatBot{
 
     startChatBot(first_name, mobile_phone, email) {
         cy.enter('#chat-widget').then(getBody => {
-            getBody().find('[aria-label="Open LiveChat chat widget"]').should('be.visible').click()
-            getBody().find('#name').type(first_name)
-            getBody().find('.Linkify').contains('WhatsApp Number').should('be.visible').type(mobile_phone)
-            getBody().find('#email').type(email)
-            getBody().find('select').select('No')
-            getBody().find('button').contains('Start the chat').click()
-            getBody().find('div').should('contains.text', first_name)
+            getBody().find('[aria-label="Open LiveChat chat widget"]')
+                        .should('be.visible')   
+                        .click()
+            getBody().find('#name')
+                        .clear()
+                        .type(first_name)
+            getBody().find('span')  
+                        .parent('label')
+                        .contains('WhatsApp Number')
+                        .should('be.visible')
+            getBody().find('[autocomplete = "off"]')
+                        .parent('div')
+                        .type(mobile_phone)
+            getBody().find('#email')
+                        .clear()
+                        .type(email)
+            getBody().find('select')
+                        .select('No')
+            getBody().find('button')
+                        .contains('Start the chat')
+                        .should('be.visible')
+                        .click()
+            getBody().find('div')
+                        .should('contains.text', first_name)
         })
     }
 
-    hideChatBot() {
+    closeChatBot() {
         cy.enter('#chat-widget').then(getBody => {
-            cy.get('button [type ="button"]').parents('div').click()
+            getBody().find('[aria-label="Close the chat"]')
+                        .click()
+            getBody().find('button')
+                        .contains('Close the chat')
+                        .click()
+            getBody().find('[aria-label="Minimize window"]')
+                        .click()
+            getBody().find('[aria-label="Open LiveChat chat widget"]')
+                        .should('be.visible')
+
         })
     }
 
     typeMessageInChat(message) {
         cy.enter('#chat-widget').then(getBody => {
-            getBody().find('textarea[placeholder="Write a message…"]').type(message)
-            getBody().find('button[aria-label="Send a message"]').click()
+            getBody().find('textarea[placeholder="Write a message…"]')
+                        .type(message)
+            getBody().find('button[aria-label="Send a message"]')
+                        .click()
         })
     }
 }

@@ -1,7 +1,8 @@
 class accountPage{
 
     backToHomePage() {
-        cy.get('[title= "home"]').click()
+        cy.get('[title= "home"]')
+            .click()
     }
 
     findMyName() {
