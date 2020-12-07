@@ -10,6 +10,55 @@ class HomePage {
         cy.contains('Sign Up').click()
     }
 
+    clickFlightLink() {
+        cy.get('a').contains('Flights').click()
+    }
+
+    selectFlightCities(cityFrom, cityTo) {
+        // open city from input
+        cy.get('#s2id_location_from').click()
+        // type city from
+        cy.get('#select2-drop .select2-input').type(cityFrom)
+        cy.wait(2000)
+        // click first cityFrom from dropdown list
+        cy.get('#select2-drop .select2-results li').eq(0).click()
+
+        cy.get('#s2id_location_to').click()
+        cy.get('#select2-drop .select2-input').type(cityTo)
+        cy.wait(2000)
+        cy.get('#select2-drop .select2-results li').eq(0).click()
+    }
+
+    openFlightCalendar() {
+        cy.get('#FlightsDateStart').click()
+    }
+
+    selectFlightDay(date) {
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let flightMonth = months[date.getMonth()];
+
+        cy.get('#datepickers-container div[style] .datepicker--nav-title').then(title => {
+            // if title does not include necessary month and year click next month
+            // and call this method again else choose the day
+            if (!title.text().includes(date.getFullYear()) || !title.text().includes(flightMonth)) {
+                cy.get('#datepickers-container div[style] .datepicker--nav-action[data-action="next"]').click()
+                this.selectFlightDay(date)
+            } else {
+                const daySelector = "#datepickers-container div[style] [data-date=" + date.getDate() + "][data-month=" + date.getMonth() + "]"
+                cy.get(daySelector).click()
+            }
+        })
+    }
+
+    addChildToFlight() {
+        cy.get('#flights label').contains("Child").parent("div").find('.bootstrap-touchspin-up').click()
+    }
+
+    searchTheFlight() {
+        cy.get('#flights button').contains("Search").click()
+    }
+
+
     startChatWithUser(name, whatsUpNumber, email) {
         cy.get('#chat-widget-container iframe').then($iframe => {
             const $body = $iframe.contents().find('body')
