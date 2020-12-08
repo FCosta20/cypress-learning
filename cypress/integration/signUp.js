@@ -8,8 +8,8 @@ describe('Register test', () => {
 
     //take data from loginCredentials fixture
     before(() => {
-        cy.fixture('signUpUserInfo').then((signUpUserInfo) => {
-            data = signUpUserInfo;
+        cy.fixture('personalInfo').then((personalInfo) => {
+            data = personalInfo;
         })
     })
 

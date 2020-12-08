@@ -5,10 +5,10 @@ describe('Chat bot test', () => {
     //variable for using data from fixtures
     let data = {}
 
-    //take data from chatBotInfo fixture
+    //take data from personalInfo fixture
     before (() => {
-        cy.fixture('chatBotInfo').then((chatBotInfo) => {
-            data = chatBotInfo;
+        cy.fixture('personalInfo').then((personalInfo) => {
+            data = personalInfo;
         })
     })
 

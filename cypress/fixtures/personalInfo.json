@@ -4,5 +4,8 @@
     "lastName": "Buchkovska",
     "phone": "+380507722999",
     "email": "kbuchkovska@solvd.com",
-    "password": "solvd123"
+    "password": "solvd123",
+    "incorrectPassword": "solvd111",
+    "passportNo": "123",
+    "age": "22"
 }
