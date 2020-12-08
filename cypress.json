@@ -1,6 +1,7 @@
 {
-    "baseUrl": "https://www.phptravels.net/home",
-    "viewportHeight": 1080,
-    "viewportWidth": 1920,
-    "chromeWebSecurity": false
+  "baseUrl": "https://www.phptravels.net/home",
+  "viewportHeight": 1080,
+  "viewportWidth": 1920,
+  "chromeWebSecurity": false,
+  "projectId": "mwt5zv"
 }

@@ -2,7 +2,9 @@ class AccountPage {
 
     navigateToHomePage() {
         cy.wait(2000)
-        cy.get('a').contains('Home').click()
+        cy.get('a')
+            .contains('Home')
+            .click()
     }
 
     getGreetingElement() {

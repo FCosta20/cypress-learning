@@ -24,7 +24,8 @@ describe('Registration suite', () => {
 
         registrationPage.register(user.firstName, user.lastName, user.phoneNumber, user.email, user.password, user.password)
 
-        accountPage.getGreetingElement().should('contain',  `Hi, ${user.firstName} ${user.lastName}`)
+        accountPage.getGreetingElement()
+            .should('contain',  `Hi, ${user.firstName} ${user.lastName}`)
     })
 
     // fill all inputs with user data but with different passwords click 'Sign Up' and
@@ -34,7 +35,8 @@ describe('Registration suite', () => {
 
         registrationPage.register(user.firstName, user.lastName, user.phoneNumber, user.email, user.password, user.wrongPassword)
 
-        registrationPage.getErrorMessage().should('contain',  'Password not matching with confirm password')
+        registrationPage.getErrorMessage()
+            .should('contain',  'Password not matching with confirm password')
     })
 
 })

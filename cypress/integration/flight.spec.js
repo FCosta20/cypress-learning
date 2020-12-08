@@ -6,6 +6,7 @@ import {accountPage} from "../support/pages/accountPage";
 import {flightsPage} from "../support/pages/flightsPage";
 import {bookFlightPage} from "../support/pages/bookFlightPage";
 import {invoicePage} from "../support/pages/invoicePage";
+import {getDateFromCurrentDay} from "../support/utils/dateUtils";
 
 describe('Flight suite', () => {
 
@@ -30,7 +31,7 @@ describe('Flight suite', () => {
     // fill passenger info on the booking flight page and click confirm the booking,
     // check that booking status Unpaid then click and confirm pay on arrival
     // and check that booking status was changed to Reserved
-    it('should be sent a message to chat', () => {
+    it('should be book a flight', () => {
         homePage.navigateToLoginPage()
 
         loginPage.login(user.email, user.password)
@@ -42,9 +43,7 @@ describe('Flight suite', () => {
         homePage.selectFlightCities(testData.cityFrom, testData.cityTo)
 
         homePage.openFlightCalendar()
-        const date = new Date()
-        date.setDate(date.getDate() + testData.daysBeforeTheFlight)
-        homePage.selectFlightDay(date)
+        homePage.selectFlightDay(getDateFromCurrentDay(testData.daysBeforeTheFlight))
 
         homePage.addChildToFlight()
 
@@ -55,9 +54,11 @@ describe('Flight suite', () => {
         bookFlightPage.fillPassengerData(testData.passengerName, testData.passengerAge, testData.passengerPassportNumber)
         bookFlightPage.confirmTheBooking()
 
-        invoicePage.getBookingStatus().should('contain', 'Unpaid')
+        invoicePage.getBookingStatus()
+            .should('contain', 'Unpaid')
         invoicePage.payOnArrival()
-        invoicePage.getBookingStatus().should('contain', 'Reserved')
+        invoicePage.getBookingStatus()
+            .should('contain', 'Reserved')
     })
 
 })

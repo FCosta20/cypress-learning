@@ -1,36 +1,51 @@
 class HomePage {
 
     navigateToLoginPage() {
-        cy.get('.dropdown-login #dropdownCurrency').click()
-        cy.contains('Login').click()
+        cy.get('.dropdown-login #dropdownCurrency')
+            .click()
+        cy.contains('Login')
+            .click()
     }
 
     navigateToRegistrationPage() {
-        cy.get('.dropdown-login #dropdownCurrency').click()
-        cy.contains('Sign Up').click()
+        cy.get('.dropdown-login #dropdownCurrency')
+            .click()
+        cy.contains('Sign Up')
+            .click()
     }
 
     clickFlightLink() {
-        cy.get('a').contains('Flights').click()
+        cy.get('a')
+            .contains('Flights')
+            .click()
     }
 
     selectFlightCities(cityFrom, cityTo) {
         // open city from input
-        cy.get('#s2id_location_from').click()
+        cy.get('#s2id_location_from')
+            .click()
         // type city from
-        cy.get('#select2-drop .select2-input').type(cityFrom)
+        cy.get('#select2-drop .select2-input')
+            .type(cityFrom)
         cy.wait(2000)
         // click first cityFrom from dropdown list
-        cy.get('#select2-drop .select2-results li').eq(0).click()
+        cy.get('#select2-drop .select2-results li')
+            .eq(0)
+            .click()
 
-        cy.get('#s2id_location_to').click()
-        cy.get('#select2-drop .select2-input').type(cityTo)
+        cy.get('#s2id_location_to')
+            .click()
+        cy.get('#select2-drop .select2-input')
+            .type(cityTo)
         cy.wait(2000)
-        cy.get('#select2-drop .select2-results li').eq(0).click()
+        cy.get('#select2-drop .select2-results li')
+            .eq(0)
+            .click()
     }
 
     openFlightCalendar() {
-        cy.get('#FlightsDateStart').click()
+        cy.get('#FlightsDateStart')
+            .click()
     }
 
     selectFlightDay(date) {
@@ -41,21 +56,29 @@ class HomePage {
             // if title does not include necessary month and year click next month
             // and call this method again else choose the day
             if (!title.text().includes(date.getFullYear()) || !title.text().includes(flightMonth)) {
-                cy.get('#datepickers-container div[style] .datepicker--nav-action[data-action="next"]').click()
+                cy.get('#datepickers-container div[style] .datepicker--nav-action[data-action="next"]')
+                    .click()
                 this.selectFlightDay(date)
             } else {
                 const daySelector = "#datepickers-container div[style] [data-date=" + date.getDate() + "][data-month=" + date.getMonth() + "]"
-                cy.get(daySelector).click()
+                cy.get(daySelector)
+                    .click()
             }
         })
     }
 
     addChildToFlight() {
-        cy.get('#flights label').contains("Child").parent("div").find('.bootstrap-touchspin-up').click()
+        cy.get('#flights label')
+            .contains("Child")
+            .parent("div")
+            .find('.bootstrap-touchspin-up')
+            .click()
     }
 
     searchTheFlight() {
-        cy.get('#flights button').contains("Search").click()
+        cy.get('#flights button')
+            .contains("Search")
+            .click()
     }
 
 
@@ -63,16 +86,30 @@ class HomePage {
         cy.get('#chat-widget-container iframe').then($iframe => {
             const $body = $iframe.contents().find('body')
             // click the chat button to open
-            cy.wrap($body).find('button[aria-label="Open LiveChat chat widget"]').click()
+            cy.wrap($body).find('button[aria-label="Open LiveChat chat widget"]')
+                .click()
             // clear inputs and type name, whatsUpNumber and email
-            cy.wrap($body).find('#name').clear().type(name)
-            cy.wrap($body).find('.lc-1drigbt').contains('WhatsApp Number')
-                .parent('div').find('input').clear().type(whatsUpNumber)
-            cy.wrap($body).find('#email').clear().type(email)
+            cy.wrap($body).find('#name')
+                .clear()
+                .type(name)
+            cy.wrap($body).find('form')
+                .contains('WhatsApp Number')
+                .parent('div')
+                .find('input')
+                .clear()
+                .type(whatsUpNumber)
+            cy.wrap($body)
+                .find('#email')
+                .clear()
+                .type(email)
             // select yes option
-            cy.wrap($body).find('.lc-1drigbt').contains('Are you existing client?')
-                .parent('div').find('select').select("index0_0")
-            cy.wrap($body).contains('Start the chat').click()
+            cy.wrap($body).find('form')
+                .contains('Are you existing client?')
+                .parent('div')
+                .find('select')
+                .select("index0_0")
+            cy.wrap($body).contains('Start the chat')
+                .click()
         })
     }
 
@@ -81,11 +118,14 @@ class HomePage {
             const $body = $iframe.contents().find('body')
             // if user is log-in to the chat then click close button and confirm
             if (isStarted) {
-                cy.wrap($body).find('button[aria-label="Close the chat"]').click()
-                cy.wrap($body).find('span').contains('Close the chat').click()
+                cy.wrap($body).find('button[aria-label="Close the chat"]')
+                    .click()
+                cy.wrap($body).find('span').contains('Close the chat')
+                    .click()
             }
             // hide chat
-            cy.wrap($body).find('button[aria-label="Minimize window"]').click()
+            cy.wrap($body).find('button[aria-label="Minimize window"]')
+                .click()
         })
     }
 
@@ -93,7 +133,10 @@ class HomePage {
         cy.get('#chat-widget-container iframe').then($iframe => {
             const $body = $iframe.contents().find('body')
             // click show more to display all info user entered
-            cy.wrap($body).find('.lc-6yodnr').last().contains('Show more').click()
+            cy.wrap($body).find('.lc-6yodnr')
+                .last()
+                .contains('Show more')
+                .click()
         })
     }
 
@@ -101,7 +144,11 @@ class HomePage {
     getUserCredInsideChatFrameByTitle(title) {
         return cy.get('#chat-widget-container iframe').then($iframe => {
             const $body = $iframe.contents().find('body')
-            return cy.wrap($body).find('.lc-rv06pv.e1r9cm3y0').last().contains(title).parent('div').next('div')
+            return cy.wrap($body).find('.lc-rv06pv.e1r9cm3y0')
+                .last()
+                .contains(title)
+                .parent('div')
+                .next('div')
         })
     }
 
@@ -121,9 +168,13 @@ class HomePage {
         cy.get('#chat-widget-container iframe').then($iframe => {
             const $body = $iframe.contents().find('body')
             // type message to input
-            cy.wrap($body).find('textarea[placeholder="Write a message…"]').type(message)
+            cy.wrap($body)
+                .find('textarea[placeholder="Write a message…"]')
+                .type(message)
             // send the message
-            cy.wrap($body).find('button[aria-label="Send a message"]').click()
+            cy.wrap($body)
+                .find('button[aria-label="Send a message"]')
+                .click()
         })
     }
 
@@ -131,7 +182,10 @@ class HomePage {
         return cy.get('#chat-widget-container iframe').then($iframe => {
             const $body = $iframe.contents().find('body')
             // get last sent message from the chat
-            return cy.wrap($body).find('.lc-142muc0.eovu8nx0').last().find('span')
+            return cy.wrap($body)
+                .find('.lc-142muc0.eovu8nx0')
+                .last()
+                .find('span')
         })
     }
 
@@ -139,7 +193,9 @@ class HomePage {
         return cy.get('#chat-widget-container iframe').then($iframe => {
             const $body = $iframe.contents().find('body')
             // get status of sent message like Delivered, Read...
-            return cy.wrap($body).find('.lc-io2gce.e10ccb475').last()
+            return cy.wrap($body)
+                .find('.lc-io2gce.e10ccb475')
+                .last()
         })
     }
 

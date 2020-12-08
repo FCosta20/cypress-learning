@@ -28,14 +28,19 @@ describe('Chat suite', () => {
 
         homePage.showMoreInfoAboutUserInChat()
 
-        homePage.getChatUserName().should('contain', user.firstName)
-        homePage.getChatUserWhatsAppNumber().should('contain', user.phoneNumber)
-        homePage.getChatUserEmail().should('contain', user.email)
+        homePage.getChatUserName()
+            .should('contain', user.firstName)
+        homePage.getChatUserWhatsAppNumber()
+            .should('contain', user.phoneNumber)
+        homePage.getChatUserEmail()
+            .should('contain', user.email)
 
         homePage.sendMessageToChat(testData.message)
 
-        homePage.getLastSentMessageFromChat().should('contain', testData.message)
-        homePage.getLastSentMessageStatusFromChat().should('contain', 'Delivered')
+        homePage.getLastSentMessageFromChat()
+            .should('contain', testData.message)
+        homePage.getLastSentMessageStatusFromChat()
+            .should('contain', 'Delivered')
 
         homePage.closeTheChat(true)
     })

@@ -1,7 +1,9 @@
 class FlightsPage {
 
     bookFirstFlight() {
-        cy.get('#LIST button').contains('Book Now').click()
+        cy.get('#LIST button')
+            .contains('Book Now')
+            .click()
     }
 
 }

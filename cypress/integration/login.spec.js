@@ -24,7 +24,8 @@ describe('Login suite', () => {
 
         loginPage.login(user.email, user.password)
 
-        accountPage.getGreetingElement().should('contain',  `Hi, ${user.firstName} ${user.lastName}`)
+        accountPage.getGreetingElement()
+            .should('contain',  `Hi, ${user.firstName} ${user.lastName}`)
     })
 
     // fill email and wrong password and check that error message contain 'Invalid Email or Password'
@@ -33,7 +34,8 @@ describe('Login suite', () => {
 
         loginPage.login(user.email, user.wrongPassword)
 
-        loginPage.getErrorMessage().should('contain',  'Invalid Email or Password')
+        loginPage.getErrorMessage()
+            .should('contain',  'Invalid Email or Password')
     })
 
 })
