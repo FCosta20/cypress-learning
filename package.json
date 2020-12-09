@@ -1,0 +1,25 @@
+{
+  "name": "ang2-conduit",
+  "version": "0.0.0",
+  "license": "MIT",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build --prod  --base-href ./ && cp CNAME dist/CNAME",
+    "test": "ng test",
+    "lint": "ng lint --force",
+    "e2e": "ng e2e",
+    "registration_tests": "npx cypress run --spec 'cypress/integration/registration.spec.js' --record --key 9d361d8e-01aa-41be-8f0f-3b36cf02d30d",
+    "login_tests": "npx cypress run --spec 'cypress/integration/login.spec.js' --record --key 9d361d8e-01aa-41be-8f0f-3b36cf02d30d",
+    "chat_tests": "npx cypress run --spec 'cypress/integration/chat.spec.js' --record --key 9d361d8e-01aa-41be-8f0f-3b36cf02d30d",
+    "flight_tests": "npx cypress run --spec 'cypress/integration/flight.spec.js' --record --key 9d361d8e-01aa-41be-8f0f-3b36cf02d30d"
+  },
+  "pre-commit": [
+    "lint"
+  ],
+  "private": true,
+  "dependencies": {},
+  "devDependencies": {
+    "cypress": "^5.6.0"
+  }
+}
