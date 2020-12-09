@@ -6,7 +6,7 @@ describe('Register test', () => {
     //variable for using data from fixtures
     let data = {}
 
-    //take data from loginCredentials fixture
+    //take data from personalInfo fixture
     before(() => {
         cy.fixture('personalInfo').then((personalInfo) => {
             data = personalInfo;

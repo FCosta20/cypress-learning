@@ -29,8 +29,7 @@ class ChatBot{
             getBody().find('div')
                      .contains('Name:')
                      .should('contains', name)
-        })
-            
+        })    
     }
 
     //close chatBot
