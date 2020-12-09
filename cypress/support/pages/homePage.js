@@ -20,6 +20,14 @@ class HomePage {
             .click()
     }
 
+    selectBusinessClass() {
+        cy.get('.flightclass .chosen-single')
+            .click()
+        cy.get('.chosen-results li')
+            .contains('Business')
+            .click()
+    }
+
     selectFlightCities(cityFrom, cityTo) {
         // open city from input
         cy.get('#s2id_location_from')
@@ -69,7 +77,7 @@ class HomePage {
 
     addChildToFlight() {
         cy.get('#flights label')
-            .contains("Child")
+            .contains("Adults")
             .parent("div")
             .find('.bootstrap-touchspin-up')
             .click()

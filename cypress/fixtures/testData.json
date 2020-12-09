@@ -1,8 +1,8 @@
 {
   "message": "Hi, bot",
   "cityFrom": "London",
-  "cityTo": "Barcelona",
-  "daysBeforeTheFlight": 62,
+  "cityTo": "New York",
+  "flightDate": "March 24, 2021",
   "passengerName": "User2",
   "passengerAge": "16",
   "passengerPassportNumber": "KR643864"

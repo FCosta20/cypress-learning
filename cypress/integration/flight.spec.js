@@ -40,10 +40,12 @@ describe('Flight suite', () => {
 
         homePage.clickFlightLink()
 
+        homePage.selectBusinessClass()
+
         homePage.selectFlightCities(testData.cityFrom, testData.cityTo)
 
         homePage.openFlightCalendar()
-        homePage.selectFlightDay(getDateFromCurrentDay(testData.daysBeforeTheFlight))
+        homePage.selectFlightDay(new Date(testData.flightDate))
 
         homePage.addChildToFlight()
 
