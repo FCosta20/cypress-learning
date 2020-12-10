@@ -6,11 +6,15 @@ import{onAccountPage} from "../support/page_objects/accountPage.js"
 describe('login and register suite', ()=>{
 
     let user = {}
+    let bookFlight = {}
 
     before(() => {
         cy.fixture('register').then(register=> {
             user = register;
           });
+        cy.fixture('flightInfo').then(flightInfo=>{
+            bookFlight = flightInfo;
+        })
       });
 
     beforeEach('open site', () => {
@@ -47,4 +51,10 @@ describe('login and register suite', ()=>{
         onAccountPage.backToHomePage()    
     })
 
+    it.only('BOOK A FLIGHT AS A REGISTERED USER', ()=>{
+        onHomePage.goToBookingFlight()
+        onHomePage.bookFlight(bookFlight.flightFrom, bookFlight.flightTo)
+        onHomePage.getDatePicker()
+        onHomePage.selectFlightDay(new Date(bookFlight.flightDate))
+    })
 })

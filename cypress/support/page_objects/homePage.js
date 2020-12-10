@@ -11,6 +11,72 @@ class HomePage{
             .click()
     }
 
+    goToBookingFlight() {
+        cy.get('.menu-horizontal-wrapper-02')
+            .find('[data-name = "flights"]')
+            .parent('li')   
+            .click()
+            .then( ()=> {
+                cy.get('[data-name = "flights"]')
+                .should('have.class','active')
+        })
+    }
+
+    bookFlight(flightFrom, flightTo ) {
+        cy.get('.tab-inner')
+            .parent('#flights') 
+            .find('#s2id_location_from')
+            .click()
+            .get('#select2-drop ')  
+                .find('.select2-input') 
+                .parent('.select2-search')
+            .type(flightFrom)
+                cy.get('.select2-results')
+                    .then( ()=> {
+                        cy.get('li.select2-results-dept-0')
+                            .first()
+                            .click()
+                    })
+        cy.get('.tab-inner')
+            .parent('#flights') 
+            .find('#s2id_location_to')
+            .dblclick()
+            .get('#select2-drop ')
+                .find('.select2-input')
+                .parent('.select2-search')
+            .type(flightTo)
+                cy.get('.select2-results')
+                    .then( ()=> {
+                        cy.get('li.select2-results-dept-0')
+                        .first()
+                        .click()
+                })              
+    }
+
+    getDatePicker() {
+        cy.get('#FlightsDateStart')
+            .click()
+    }
+
+    selectFlightDay(date) {
+        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        let flightMonth = months[date.getMonth()];
+
+        cy.get('#datepickers-container div[style] .datepicker--nav-title').then(title => {
+            // if title does not include necessary month and year click next month
+            // and call this method again.
+            // else condition will work then mounth of flight is a current mounth and  its just choose the day
+            if (!title.text().includes(date.getFullYear()) || !title.text().includes(flightMonth)) {
+                cy.get('#datepickers-container div[style] .datepicker--nav-action[data-action="next"]')
+                    .click()
+                this.selectFlightDay(date)
+            } else {
+                const daySelector = "#datepickers-container div[style] [data-date=" + date.getDate() + "][data-month=" + date.getMonth() + "]"
+                cy.get(daySelector)
+                    .click()
+            }
+        })
+    }
     
 }
 
