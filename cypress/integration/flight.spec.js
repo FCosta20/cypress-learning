@@ -6,7 +6,6 @@ import {accountPage} from "../support/pages/accountPage";
 import {flightsPage} from "../support/pages/flightsPage";
 import {bookFlightPage} from "../support/pages/bookFlightPage";
 import {invoicePage} from "../support/pages/invoicePage";
-import {getDateFromCurrentDay} from "../support/utils/dateUtils";
 
 describe('Flight suite', () => {
 
@@ -47,7 +46,7 @@ describe('Flight suite', () => {
         homePage.openFlightCalendar()
         homePage.selectFlightDay(new Date(testData.flightDate))
 
-        homePage.addChildToFlight()
+        homePage.addAdultToFlight()
 
         homePage.searchTheFlight()
 

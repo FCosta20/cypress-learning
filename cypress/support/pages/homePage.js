@@ -75,7 +75,7 @@ class HomePage {
         })
     }
 
-    addChildToFlight() {
+    addAdultToFlight() {
         cy.get('#flights label')
             .contains("Adults")
             .parent("div")
