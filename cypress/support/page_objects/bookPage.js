@@ -1,7 +1,6 @@
 
 class BookPage{
 
-    //fill from for booking flight as loged in user and submit
     fillBookingAsLogedInUser(name, age, passportNo){
         cy.get('#passenger_name_0')
           .click({force:true})
@@ -12,11 +11,8 @@ class BookPage{
          cy.get('#passenger_passport_0')
            .click({force:true})
            .type(passportNo) 
-        cy.get('button.btn.btn-success.btn-lg.btn-block.completebook')
-          .click()
     }
 
-    //fill form for booking as guest and submit
     fillBookingAsGuest(firstName, lastName, email, phone, address){
       cy.get('input[name="firstname"]')
         .click({force:true})
@@ -47,9 +43,11 @@ class BookPage{
               .click()
           }
         })
+    }
+
+    completeBooking(){
       cy.get('button.btn.btn-success.btn-lg.btn-block.completebook')
         .click()
-      
     }
 
 }

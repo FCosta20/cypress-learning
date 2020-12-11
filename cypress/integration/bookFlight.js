@@ -34,30 +34,47 @@ describe('Search form', () => {
         cy.visit('/')
     })
 
-    //search flight for loged in user
+    //search flight by aeroport name for loged in user
     it('Search flight as loged in user', () => {
         homePage.openLogInPage()
-        loginPage.logInUser(user.email, user.password)
+        loginPage.fillLogInForm(user.email, user.password)
+        loginPage.logIn()
         cy.get('.text-align-left').then(label => {
             expect(label.text()).to.equal('Hi, ' + user.firstName + ' ' + user.lastName)
         })
         header.openHomePage()
-        cy.url().should('eq', 'https://www.phptravels.net/home')
-        homePage.searchFlightByAeroport(flight.cityFrom, flight.aeroportTo)
-        searchPage.bookFirstFlightResult()
+        homePage.openFlightForm()
+        homePage.selectAeroportFrom(flight.aeroportFrom)
+        homePage.selectAeroportTo(flight.aeroportTo)
+        homePage.selectCurrentDay()
+        homePage.startSearch()
+        searchPage.selectFirstFlightResult()
         bookPage.fillBookingAsLogedInUser(user.firstName, user.age, user.passportNo)
+        bookPage.completeBooking()
         invoicePage.openInvoicePage()
+        invoicePage.checkIfBookingIsUnpaid()
     })
 
-    //search flight for guest
+    //search flight by city name for guest
     it.only('Search flight without login', () => {
-        homePage.selectFlightBuCity(flight.cityFrom, flight.cityTo)
-        searchPage.bookFirstFlightResult()
+        //fill flight search form
+        homePage.openFlightForm()
+        homePage.selectBusinessClass()
+        homePage.selectCityFrom(flight.cityFrom)
+        homePage.selectCityTo(flight.cityTo)
+        homePage.increasePassengers()
+        homePage.selectDay(flight.futureDay, flight.futureMonth, flight.futureYear)
+        //click search button
+        homePage.startSearch()
+        //select first result in the list
+        searchPage.selectFirstFlightResult()
+        //fill info about passenger
         bookPage.fillBookingAsGuest(guest.firstName, guest.lastName, guest.email, guest.phone, guest.address)
+        //
+        bookPage.completeBooking()
+        //check booking status
         invoicePage.openInvoicePage()
+        invoicePage.checkIfBookingIsUnpaid()
     })
-
-
-
 
 })

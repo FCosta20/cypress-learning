@@ -5,6 +5,9 @@ class Header{
     openHomePage(){
         cy.get('[title="home"]')
           .click()
+        
+        cy.url()
+          .should('eq', 'https://www.phptravels.net/home')
     }
 }
 

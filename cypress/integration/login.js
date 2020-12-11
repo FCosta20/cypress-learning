@@ -18,18 +18,21 @@ describe('Tests for login', () => {
     //open login page
     beforeEach('Open PHPTravelers and open login page', () => {
         cy.visit('/')
+        homePage.openAccountDropdown()
         homePage.openLogInPage()
     })
 
     it('Login with correct credentials', () => {
-        loginPage.logInUser(login.email, login.password)
+        loginPage.fillLogInForm(login.email, login.password)
+        loginPage.logIn()
         cy.get('.text-align-left').then(label => {
             expect(label.text()).to.equal('Hi, ' + login.firstName + ' ' + login.lastName)
         })
     })
 
     it('Login with incorrect password', () => {
-        loginPage.logInUser(login.email, login.incorrectPassword)
+        loginPage.fillLogInForm(login.email, login.incorrectPassword)
+        loginPage.logIn()
         cy.get('.resultlogin')
           .should('contain', 'Invalid')
     })

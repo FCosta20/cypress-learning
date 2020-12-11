@@ -1,8 +1,7 @@
 
 class SignUp{
 
-    //fill all the fields to register user
-    signUpUser(firstName, lastName, phone, email, password){
+    fillSignUpForm(firstName, lastName, phone, email, password){
         cy.contains('span', 'First Name')
           .type(firstName)
         cy.contains('span', 'Last Name')
@@ -15,8 +14,11 @@ class SignUp{
           .type(password)
         cy.contains('span', 'Confirm Password')
           .type(password)
-        cy.contains('button', 'Sign Up')
-          .click()
+    }
+
+    signUp(){
+      cy.contains('button', 'Sign Up')
+        .click()
     }
 }
 

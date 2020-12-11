@@ -1,7 +1,10 @@
 
 {
-    "cityFrom": "Barcelona",
+    "cityFrom": "London",
     "aeroportFrom": "BCN",
-    "cityTo": "Milan",
-    "aeroportTo": "LIN"
+    "cityTo": "New York",
+    "aeroportTo": "LIN",
+    "futureYear": "2021",
+    "futureMonth": "March",
+    "futureDay": "24"
 }
