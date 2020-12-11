@@ -7,6 +7,7 @@ Feature: FlightFeature
       Given I visit home page
       When I click My Account and Login link
       And I login with "tt2857506@gmail.com" and "testtest2857506"
+      Then I should be navigated to accountPage with greeting message: Hi, "Test" "User"
       And I navigate to home page and click flight link
       And I select business class
       And I select the flight from "London" to "New York"

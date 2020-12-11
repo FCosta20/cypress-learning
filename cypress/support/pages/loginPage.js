@@ -10,6 +10,13 @@ class LoginPage {
             .click()
     }
 
+    clearInputs() {
+        cy.get('input[name="username"]')
+            .clear({force: true})
+        cy.get('input[name="password"]')
+            .clear({force: true})
+    }
+
     getErrorMessage() {
         return cy.get('#loginfrm .alert-danger')
     }

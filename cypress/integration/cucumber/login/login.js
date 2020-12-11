@@ -15,6 +15,13 @@ When(`I login with {string} and {string}`, (email, password) => {
     loginPage.login(email, password)
 })
 
+When('I login as following', dataTable => {
+    dataTable.hashes().forEach(row => {
+        loginPage.clearInputs()
+        loginPage.login(row.email, row.password)
+    })
+})
+
 Then(`I should be navigated to accountPage with greeting message: Hi, {string} {string}`, (firstName, lastName) => {
     accountPage.getGreetingElement()
         .should('contain',  `Hi, ${firstName} ${lastName}`)

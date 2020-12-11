@@ -35,6 +35,9 @@ describe('Flight suite', () => {
 
         loginPage.login(user.email, user.password)
 
+        accountPage.getGreetingElement()
+            .should('contain',  `Hi, ${user.firstName} ${user.lastName}`)
+
         accountPage.navigateToHomePage()
 
         homePage.clickFlightLink()

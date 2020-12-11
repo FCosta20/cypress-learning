@@ -1,9 +1,7 @@
 class AccountPage {
 
     navigateToHomePage() {
-        cy.wait(2000)
-        cy.get('a')
-            .contains('Home')
+        cy.get('a[title="home"]')
             .click()
     }
 

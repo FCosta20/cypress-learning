@@ -27,11 +27,11 @@ When('I select business class', () => {
     homePage.selectBusinessClass()
 })
 
-When(`I select the flight from {string} to {string} from the calendar`, (cityFrom, cityTo) => {
+When(`I select the flight from {string} to {string}`, (cityFrom, cityTo) => {
     homePage.selectFlightCities(cityFrom, cityTo)
 })
 
-When(`I select the flight day {string}`, (flightDate) => {
+When(`I select the flight day {string} from the calendar`, (flightDate) => {
     homePage.openFlightCalendar()
     homePage.selectFlightDay(new Date(flightDate))
 })
@@ -58,6 +58,11 @@ When('I click Confirm this booking', () => {
 
 When('I click pay on arrival', () => {
     invoicePage.payOnArrival()
+})
+
+Then(`I should be navigated to accountPage with greeting message: Hi, {string} {string}`, (firstName, lastName) => {
+    accountPage.getGreetingElement()
+        .should('contain',  `Hi, ${firstName} ${lastName}`)
 })
 
 Then('Booking status should be {string}', bookingStatus => {

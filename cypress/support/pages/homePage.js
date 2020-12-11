@@ -35,19 +35,17 @@ class HomePage {
         // type city from
         cy.get('#select2-drop .select2-input')
             .type(cityFrom)
-        cy.wait(2000)
         // click first cityFrom from dropdown list
-        cy.get('#select2-drop .select2-results li')
-            .eq(0)
+        cy.get('#select2-drop .select2-results li.select2-results-dept-0')
+            .first()
             .click()
 
         cy.get('#s2id_location_to')
             .click()
         cy.get('#select2-drop .select2-input')
             .type(cityTo)
-        cy.wait(2000)
-        cy.get('#select2-drop .select2-results li')
-            .eq(0)
+        cy.get('#select2-drop .select2-results li.select2-results-dept-0')
+            .first()
             .click()
     }
 
