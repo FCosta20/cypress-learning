@@ -37,6 +37,7 @@ class HomePage{
                             .first()
                             .click()
                     })
+
         cy.get('.tab-inner')
             .parent('#flights') 
             .find('#s2id_location_to')
@@ -50,22 +51,39 @@ class HomePage{
                         cy.get('li.select2-results-dept-0')
                         .first()
                         .click()
-                })              
+                })
+                
+        cy.get('#flights label')
+            .contains("Adults")
+            .parent("div")
+            .find('.bootstrap-touchspin-up')
+            .click()
+
+        cy.get('.chosen-container')
+            .find('span')
+            .contains('Economy')
+            .parent('.chosen-single')
+            .click()
+            cy.get('[data-option-array-index="1"]')
+            .click()         
     }
 
     getDatePicker() {
-        cy.get('#FlightsDateStart')
+        cy.get('.tab-inner')
+            .find('#FlightsDateStart')
             .click()
     }
 
     selectFlightDay(date) {
-        const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const months = ["January", "February", "March", 
+                        "April", "May", "June", "July", "August", 
+                        "September", "October", "November", "December"];
         let flightMonth = months[date.getMonth()];
 
         cy.get('#datepickers-container div[style] .datepicker--nav-title').then(title => {
             // if title does not include necessary month and year click next month
             // and call this method again.
-            // else condition will work then mounth of flight is a current mounth and  its just choose the day
+            // else condition will work then mounth of flight is a current mounth, so its just choose the day
             if (!title.text().includes(date.getFullYear()) || !title.text().includes(flightMonth)) {
                 cy.get('#datepickers-container div[style] .datepicker--nav-action[data-action="next"]')
                     .click()
@@ -76,6 +94,15 @@ class HomePage{
                     .click()
             }
         })
+    }
+
+    findFlight() {
+        cy.get('.tab-inner')
+            .find('.btn-primary')
+            .parent('.col-lg-1')
+            .contains("Search")
+            .should('be.visible')
+            .click()
     }
     
 }

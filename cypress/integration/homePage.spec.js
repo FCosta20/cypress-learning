@@ -2,6 +2,9 @@ import{onHomePage} from "../support/page_objects/homePage.js"
 import{onLoginPage} from "../support/page_objects/loginPage.js"
 import{onRegisterPage} from "../support/page_objects/registerPage.js"
 import{onAccountPage} from "../support/page_objects/accountPage.js"
+import { onFlightListPage } from "../support/page_objects/flightListPage.js"
+import { onBookingPage } from "../support/page_objects/bookingPage.js"
+import { onInvoicePage } from "../support/page_objects/invoicePage.js"
 
 describe('login and register suite', ()=>{
 
@@ -51,10 +54,23 @@ describe('login and register suite', ()=>{
         onAccountPage.backToHomePage()    
     })
 
-    it.only('BOOK A FLIGHT AS A REGISTERED USER', ()=>{
+    it('BOOK A FLIGHT AS A REGISTERED USER', ()=>{
+        // in the home page user get the booking form and write down 
+        // some information about cities,date of flight and number of passengers
+        // and after click button to find flight that user can book
         onHomePage.goToBookingFlight()
         onHomePage.bookFlight(bookFlight.flightFrom, bookFlight.flightTo)
         onHomePage.getDatePicker()
         onHomePage.selectFlightDay(new Date(bookFlight.flightDate))
+        onHomePage.findFlight()
+        // choose the first flight from the list
+        onFlightListPage.bookFirstFlight()
+
+        // its needed to sign in and fill in the passengers field to confirm the booking
+        onBookingPage.signIn(user.email,user.password)
+        onBookingPage.fillInPassengersData(user.first_name,user.age,user.passport_number)
+        onBookingPage.confirmTheBooking()
+        //just checking the booking status
+        onInvoicePage.checkIfBookingIsUnpaid()
     })
 })

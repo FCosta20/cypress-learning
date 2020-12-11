@@ -1,7 +1,9 @@
 {
     "first_name": "Eliot",
     "last_name": "Leto",
+    "age": "22",
     "mobile_phone": "+416541872",
     "email": "lepor37914@ffeast.com",
-    "password": "123456789"
+    "password": "123456789",
+    "passport_number":"124y2184y"
 }
