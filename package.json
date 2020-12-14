@@ -20,6 +20,10 @@
   },
   "homepage": "https://github.com/kbuchkvoska/cypress-learning#readme",
   "devDependencies": {
+    "cypress-cucumber-preprocessor": "^1.19.2",
     "cypress-iframe": "^1.0.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
   }
 }
