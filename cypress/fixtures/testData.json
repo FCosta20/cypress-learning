@@ -1,0 +1,9 @@
+{
+  "message": "Hi, bot",
+  "cityFrom": "London",
+  "cityTo": "New York",
+  "flightDate": "March 24, 2021",
+  "passengerName": "User2",
+  "passengerAge": "22",
+  "passengerPassportNumber": "KR643864"
+}
