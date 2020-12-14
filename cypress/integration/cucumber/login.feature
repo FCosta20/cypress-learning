@@ -4,24 +4,23 @@ Feature: LoginFeature
     So that I can use all the features of the site.
 
     Background:
-        Given I visit home page
+        Given I am on home page
 
     Scenario: Should be authorised
-        When I click My Account and Login link
-        And I login with "tt2857506@gmail.com" and "testtest2857506"
-        Then I should be navigated to accountPage with greeting message: Hi, "Test" "User"
+        When I navigate to login page
+        And I login with correct credentials
+        Then I should see greeting message
 
     Scenario: Should be authorised with last email and password
-        When I click My Account and Login link
+        When I navigate to login page
         And I login as following
             | email                | password         |
             | tt28575062@gmail.com | testtest28575062 |
             | tt28575063@gmail.com | testtest28575063 |
             | tt2857506@gmail.com  | testtest2857506  |
-        Then I should be navigated to accountPage with greeting message: Hi, "Test" "User"
+        Then I should see greeting message
 
     Scenario: Should not be authorised with wrong password
-        When I click My Account and Login link
-        And I login with "tt2857506@gmail.com" and "testtest228575062"
-        Then The error message "Invalid Email or Password" should be visible
-
+        When I navigate to login page
+        And I login with wrong password
+        Then I should see an error message

@@ -3,16 +3,24 @@ import {accountPage} from "../../../support/pages/accountPage";
 import {loginPage} from "../../../support/pages/loginPage";
 
 
-Given('I visit home page', () => {
+Given('I am on home page', () => {
     cy.openHomePage()
 })
 
-When('I click My Account and Login link', () => {
+When('I navigate to login page', () => {
     homePage.navigateToLoginPage()
 })
 
-When(`I login with {string} and {string}`, (email, password) => {
-    loginPage.login(email, password)
+When('I login with correct credentials', () => {
+    cy.fixture('user').then(user => {
+        loginPage.login(user.email, user.password)
+    })
+})
+
+When('I login with wrong password', () => {
+    cy.fixture('user').then(user => {
+        loginPage.login(user.email, user.wrongPassword)
+    })
 })
 
 When('I login as following', dataTable => {
@@ -22,12 +30,15 @@ When('I login as following', dataTable => {
     })
 })
 
-Then(`I should be navigated to accountPage with greeting message: Hi, {string} {string}`, (firstName, lastName) => {
-    accountPage.getGreetingElement()
-        .should('contain',  `Hi, ${firstName} ${lastName}`)
+Then('I should see greeting message', () => {
+    cy.fixture('user').then(user => {
+        accountPage.getGreetingElement()
+            .should('contain', `Hi, ${user.firstName} ${user.lastName}`)
+    })
 })
 
-Then(`The error message {string} should be visible`, errorMessage => {
+Then(`I should see an error message`, () => {
     loginPage.getErrorMessage()
-        .should('contain',  errorMessage)
+        .should('contain',  'Invalid Email or Password')
 })
+

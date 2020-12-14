@@ -1,37 +1,45 @@
 import {homePage} from "../../../support/pages/homePage";
 
 
-Given('I visit home page', () => {
+Given('I am on home page', () => {
     cy.openHomePage()
 })
 
-When(`I click to chat icon, fill user info with {string}, {string}, {string}, select that I am existing user and click start the chat`,
-    (name, email, whatsUpNumber) => {
-    homePage.startChatWithUser(name, email, whatsUpNumber)
+When('I start the chat with user info', () => {
+    cy.fixture('user').then(user => {
+        homePage.startChatWithUser(user.firstName, user.phoneNumber, user.email)
+    })
 })
 
 When('I show more info about user in the chat', () => {
     homePage.showMoreInfoAboutUserInChat()
 })
 
-When(`I put {string} to message field and click send message icon`, message => {
-    homePage.sendMessageToChat(message)
+When('I send a message', () => {
+    cy.fixture('testData').then(testData => {
+        homePage.sendMessageToChat(testData.message)
+    })
 })
 
-Then(`The user name, whats up number and email should contain {string}, {string} and {string}`, (name, whatsUpNumber, email) => {
-    homePage.getChatUserName()
-        .should('contain', name)
-    homePage.getChatUserWhatsAppNumber()
-        .should('contain', whatsUpNumber)
-    homePage.getChatUserEmail()
-        .should('contain', email)
+Then('I should see user data in the chat', () => {
+    homePage.showMoreInfoAboutUserInChat()
+    cy.fixture('user').then(user => {
+        homePage.getChatUserName()
+            .should('contain', user.firstName)
+        homePage.getChatUserWhatsAppNumber()
+            .should('contain', user.phoneNumber)
+        homePage.getChatUserEmail()
+            .should('contain', user.email)
+    })
 })
 
-Then(`The last sent message should be {string} with label {string}`, (message, messageStatus) => {
-    homePage.getLastSentMessageFromChat()
-        .should('contain', message)
-    homePage.getLastSentMessageStatusFromChat()
-        .should('contain', messageStatus)
+Then('The last sent message should be visible', () => {
+    cy.fixture('testData').then(testData => {
+        homePage.getLastSentMessageFromChat()
+            .should('contain', testData.message)
+        homePage.getLastSentMessageStatusFromChat()
+            .should('contain', 'Delivered')
+    })
 })
 
 Then('I close the chat', () => {

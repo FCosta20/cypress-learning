@@ -200,7 +200,7 @@ class HomePage {
             const $body = $iframe.contents().find('body')
             // get status of sent message like Delivered, Read...
             return cy.wrap($body)
-                .find('.lc-io2gce.e10ccb475')
+                .find('.e10ccb475')
                 .last()
         })
     }
