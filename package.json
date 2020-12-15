@@ -1,0 +1,29 @@
+{
+  "name": "cypress-learning",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cy:run": "npx cypress run --record --key 1d8b19a8-a00e-45ed-82e5-8def4823bfbb",
+    "cy:run_browser": "npm cypress:run -- --browser chrome"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kbuchkvoska/cypress-learning.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kbuchkvoska/cypress-learning/issues"
+  },
+  "homepage": "https://github.com/kbuchkvoska/cypress-learning#readme",
+  "devDependencies": {
+    "cypress-cucumber-preprocessor": "^1.19.2",
+    "cypress-iframe": "^1.0.1"
+  },
+  "cypress-cucumber-preprocessor": {
+    "nonGlobalStepDefinitions": true
+  }
+}
