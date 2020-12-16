@@ -59,7 +59,9 @@ describe('login and register suite', ()=>{
         // some information about cities,date of flight and number of passengers
         // and after click button to find flight that user can book
         onHomePage.goToBookingFlight()
-        onHomePage.bookFlight(bookFlight.flightFrom, bookFlight.flightTo)
+        onHomePage.chooseACity(bookFlight.flightFrom, bookFlight.flightTo)
+        onHomePage.addAdultToFlight()
+        onHomePage.chooseBusinessClass
         onHomePage.getDatePicker()
         onHomePage.selectFlightDay(new Date(bookFlight.flightDate))
         onHomePage.findFlight()

@@ -22,7 +22,7 @@ class HomePage{
         })
     }
 
-    bookFlight(flightFrom, flightTo ) {
+    chooseACity(flightFrom, flightTo ) {
         cy.get('.tab-inner')
             .parent('#flights') 
             .find('#s2id_location_from')
@@ -52,20 +52,25 @@ class HomePage{
                         .first()
                         .click()
                 })
-                
+    }
+
+    addAdultToFlight() {
         cy.get('#flights label')
             .contains("Adults")
             .parent("div")
             .find('.bootstrap-touchspin-up')
             .click()
 
+    }
+
+    chooseBusinessClass() {
         cy.get('.chosen-container')
             .find('span')
             .contains('Economy')
             .parent('.chosen-single')
             .click()
             cy.get('[data-option-array-index="1"]')
-            .click()         
+            .click() 
     }
 
     getDatePicker() {
