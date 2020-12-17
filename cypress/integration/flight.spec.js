@@ -40,13 +40,12 @@ describe('Flight suite', () => {
 
         accountPage.navigateToHomePage()
 
-        homePage.clickFlightLink()
+        homePage.openFlightForm()
 
         homePage.selectBusinessClass()
 
         homePage.selectFlightCities(testData.cityFrom, testData.cityTo)
 
-        homePage.openFlightCalendar()
         homePage.selectFlightDay(new Date(testData.flightDate))
 
         homePage.addAdultToFlight()

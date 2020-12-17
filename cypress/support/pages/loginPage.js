@@ -4,7 +4,10 @@ class LoginPage {
         cy.get('input[name="username"]')
             .type(email, {force: true})
         cy.get('input[name="password"]')
-            .type(password, {force: true})
+            .type(password, {
+                force: true,
+                log: false
+            })
         cy.get('button')
             .contains('Login')
             .click()

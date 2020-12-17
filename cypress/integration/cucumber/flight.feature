@@ -7,7 +7,7 @@ Feature: FlightFeature
       Given I am on home page
       And I login with correct credentials
       Then I should see greeting message
-      And I navigate to search flight form
+      When I navigate to search flight form
       And I search the flight from "London" to "New York"
       And I book the first flight from the list
       And I confirm the booking with passenger data

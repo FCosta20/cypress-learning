@@ -29,7 +29,6 @@ When(`I search the flight from {string} to {string}`, (cityFrom, cityTo) => {
     cy.fixture('testData').then(testData => {
         homePage.selectBusinessClass()
         homePage.selectFlightCities(cityFrom, cityTo)
-        homePage.openFlightCalendar()
         homePage.selectFlightDay(new Date(testData.flightDate))
         homePage.addAdultToFlight()
         homePage.searchTheFlight()

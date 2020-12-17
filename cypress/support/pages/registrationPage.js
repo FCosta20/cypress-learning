@@ -10,9 +10,15 @@ class RegistrationPage {
         cy.get('input[name="email"]')
             .type(email, {force: true})
         cy.get('input[name="password"]')
-            .type(password, {force: true})
+            .type(password, {
+                force: true,
+                log: false
+            })
         cy.get('input[name="confirmpassword"]')
-            .type(confirmPassword, {force: true})
+            .type(confirmPassword, {
+                force: true,
+                log: false
+            })
         cy.get('button').contains('Sign Up')
             .click()
     }

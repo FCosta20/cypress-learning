@@ -14,7 +14,7 @@ class HomePage {
             .click()
     }
 
-    clickFlightLink() {
+    openFlightForm() {
         cy.get('a')
             .contains('Flights')
             .click()
@@ -49,12 +49,7 @@ class HomePage {
             .click()
     }
 
-    openFlightCalendar() {
-        cy.get('#FlightsDateStart')
-            .click()
-    }
-
-    selectFlightDay(date) {
+    selectFlightDayOrNextMonth(date) {
         const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
         let flightMonth = months[date.getMonth()];
 
@@ -64,7 +59,7 @@ class HomePage {
             if (!title.text().includes(date.getFullYear()) || !title.text().includes(flightMonth)) {
                 cy.get('#datepickers-container div[style] .datepicker--nav-action[data-action="next"]')
                     .click()
-                this.selectFlightDay(date)
+                this.selectFlightDayOrNextMonth(date)
             } else {
                 const daySelector = "#datepickers-container div[style] [data-date=" + date.getDate() + "][data-month=" + date.getMonth() + "]"
                 cy.get(daySelector)
@@ -72,6 +67,13 @@ class HomePage {
             }
         })
     }
+
+    selectFlightDay(date) {
+        cy.get('#FlightsDateStart')
+            .click()
+        this.selectFlightDayOrNextMonth(date)
+    }
+
 
     addAdultToFlight() {
         cy.get('#flights label')
