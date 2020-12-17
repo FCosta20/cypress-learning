@@ -17,7 +17,7 @@ When('I navigate to search flight form', () => {
 
 And('I search the flight from "London" to "New York"', () => {
     onHomePage.goToBookingFlight()
-    onHomePage.chooseACity(bookFlight.flightFrom, bookFlight.flightTo)
+    onHomePage.chooseACity(flightFrom, flightTo)
     onHomePage.addAdultToFlight()
     onHomePage.chooseBusinessClass
     onHomePage.getDatePicker()
