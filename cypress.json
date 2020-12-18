@@ -1,5 +1,15 @@
 {
-    "baseUrl": "https://www.phptravels.net/home",
-    "viewportHeight": 1080,
-    "viewportWidth": 1920
+  "baseUrl": "https://www.phptravels.net/home",
+  "viewportHeight": 1080,
+  "viewportWidth": 1920,
+  "chromeWebSecurity": false,
+  "projectId": "244m2t",
+  "testFiles": [
+    "homePage.spec.js",
+    "chatBot.spec.js",
+    "cucumber/registration.feature",
+    "cucumber/login.feature",
+    "cucumber/chatbot.feature",
+    "cucumber/bookAflight.feature"
+  ]
 }
