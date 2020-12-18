@@ -81,12 +81,6 @@ Given('I should be on my account page', () => {
       .should('contain', 'https://www.phptravels.net/account/')
 })
 
-//check message about email is already exist
-Given('I should see message that email already exists', () => {
-    cy.get('.alert').then(label => {
-        expect(label.text()).to.equal((' Email Already Exists. '))
-    })
-})
 
 //check message about invalid credentails
 Given('I should see message about invalid email or password', () => {

@@ -1,6 +1,7 @@
 
 class SearchPage{
 
+  //select firts flight in flight results
     selectFirstFlightResult(){
         cy.get('#LIST')
           .find('form')

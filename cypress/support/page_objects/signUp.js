@@ -1,6 +1,7 @@
 
 class SignUp{
 
+  //fill in sign up form
     fillSignUpForm(firstName, lastName, phone, email, password){
         cy.contains('span', 'First Name')
           .type(firstName)
@@ -16,6 +17,7 @@ class SignUp{
           .type(password)
     }
 
+    //click sing up button
     signUp(){
       cy.contains('button', 'Sign Up')
         .click()

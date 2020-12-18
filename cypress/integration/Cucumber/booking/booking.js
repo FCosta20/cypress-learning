@@ -22,6 +22,7 @@ before(() => {
     })
 })
 
+//select custome day
 function selectDay(futureDay, futureMonth, futureYear){
   cy.get('div.datepicker.-bottom-left-.-from-bottom-.active')
       .find('.datepicker--nav-title')
@@ -31,27 +32,31 @@ function selectDay(futureDay, futureMonth, futureYear){
             .click()
             selectDay(futureDay, futureMonth, futureYear)
             } else {
-                cy.get('div[class^="datepicker--cell datepicker--cell-day"][data-date]')
+                cy.get('div.datepicker.-bottom-left-.-from-bottom-.active div[class^="datepicker--cell datepicker--cell-day"]')
                   .contains(futureDay)
                   .click()
                 }
         })
 }
 
+//open site
 Given('I visit PHPTravelers site', () => {
   cy.visit('https://www.phptravels.net/home')
 })
 
+//open account dropdown
 When('I open account dropdown', () => {
   cy.contains('div', 'My Account')
     .click()
 })
 
+//open login page
 Then('I open login page', () => {
   cy.contains('Login')
       .click()
 })
 
+//open home page
 When('I open home page', () => {
   cy.get('[title="home"]')
     .click()
@@ -60,6 +65,7 @@ When('I open home page', () => {
     .should('eq', 'https://www.phptravels.net/home')
 })
 
+//choose bisness class
 And('I select business class', () => {
   cy.get('div.form-icon-left.flightclass > div.chosen-container.chosen-container-single.chosen-container-single-nosearch')
     .click()
@@ -73,6 +79,7 @@ And('I select business class', () => {
     .should('contain', 'Business')
 })
 
+//select day from book flight fuxtures
 And('I select custom date', () => {
     cy.get('#FlightsDateStart')
       .click()
@@ -83,6 +90,7 @@ And('I select custom date', () => {
       .should('not.be.empty')
 })
 
+//select today date for booking flight
 Given('I select current date', () => {
   cy.get('#FlightsDateStart')
     .click()
@@ -93,6 +101,7 @@ Given('I select current date', () => {
     .click()
 })
 
+//enter aeroport from and aeroport to for booking
 When('I enter aeroport from and aeroport to', () => {
   cy.get('#s2id_location_from')
       .type(flight.aeroportFrom)
@@ -107,6 +116,7 @@ When('I enter aeroport from and aeroport to', () => {
     .type('{enter}')
 })
 
+//select city from and city to for booking
 When('I enter city from and city to', () => {
   cy.get('#s2id_location_from')
       .type(flight.cityFrom)
@@ -138,17 +148,20 @@ When('I enter city from and city to', () => {
       })
 })
 
+//open flight form for booking
 Then('I open flight form', () => {
   cy.get('[data-name="flights"]')
     .click()
 })
 
+//increase passangers quantity
 And('I increase passangers quantity', () => {
   cy.get('input[name="fadults"] + span > button')
     .contains('+')
     .click()
 })
 
+//srart searching for flight
 Then('I start search', () => {
   cy.get('form[name="flightmanualSearch"]')
     .submit()
@@ -156,14 +169,7 @@ Then('I start search', () => {
     .should('contain', 'flights/search')
 })
 
-Given('I open home page', () => {
-  cy.get('[title="home"]')
-      .click()
-    
-  cy.url()
-    .should('eq', 'https://www.phptravels.net/home')
-})
-
+//select first flight in results lidt
 When('I select first flight result', () => {
   cy.get('#LIST')
     .find('form')
@@ -173,17 +179,20 @@ When('I select first flight result', () => {
   cy.url().should('contain', 'flights/book')
 })
 
+//redirect to invoice page
 When('I open invoice page', () => {
   cy.url()
     .should('contain', 'invoice')
 })
 
+//check if booking is unpaid
 Then('I check if booking is unpaid', () => {
   cy.get('.content')
     .contains('Your booking status is Unpaid')
     .should('be.visible')
 })
 
+//fill in eser credentials
 When('I fill in login form', () => {
   cy.contains('Email')
     .type(user.email)
@@ -191,6 +200,7 @@ When('I fill in login form', () => {
     .type(user.password)
 })
 
+//click on ligon button and redirect to account page
 Then('I login', () => {
   cy.contains('button', 'Login')
     .click()
@@ -198,6 +208,7 @@ Then('I login', () => {
     .should('contain', 'account')
 })
 
+//fill info about passanger
 Then('I fill in passanger form', () => {
   cy.get('#passenger_name_0')
     .click({force:true})
@@ -210,6 +221,7 @@ Then('I fill in passanger form', () => {
     .type(user.passportNo) 
 })
 
+//fill in form for booking flight for guest
 Given('I fill in guest form', () => {
   cy.get('input[name="firstname"]')
         .click({force:true})
@@ -242,6 +254,7 @@ Given('I fill in guest form', () => {
         })
 })
 
+//complete booking
 And('I complete booking', () => {
   cy.get('button.btn.btn-success.btn-lg.btn-block.completebook')
     .click()

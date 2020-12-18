@@ -36,21 +36,29 @@ describe('Search form', () => {
 
     //search flight by aeroport name for loged in user
     it('Search flight as loged in user', () => {
+        //fill flight search form
         homePage.openLogInPage()
         loginPage.fillLogInForm(user.email, user.password)
         loginPage.logIn()
+        //cehck user info in account page
         cy.get('.text-align-left').then(label => {
             expect(label.text()).to.equal('Hi, ' + user.firstName + ' ' + user.lastName)
         })
+        //open home page
         header.openHomePage()
+        //fill flight search form
         homePage.openFlightForm()
         homePage.selectAeroportFrom(flight.aeroportFrom)
         homePage.selectAeroportTo(flight.aeroportTo)
         homePage.selectCurrentDay()
         homePage.startSearch()
+        //select first result in the list
         searchPage.selectFirstFlightResult()
+        //fill info about passenger
+        bookPage.checkIfBookingPageIsOpened()
         bookPage.fillBookingAsLogedInUser(user.firstName, user.age, user.passportNo)
         bookPage.completeBooking()
+        //check booking status
         invoicePage.openInvoicePage()
         invoicePage.checkIfBookingIsUnpaid()
     })
@@ -69,8 +77,8 @@ describe('Search form', () => {
         //select first result in the list
         searchPage.selectFirstFlightResult()
         //fill info about passenger
+        bookPage.checkIfBookingPageIsOpened()
         bookPage.fillBookingAsGuest(guest.firstName, guest.lastName, guest.email, guest.phone, guest.address)
-        //
         bookPage.completeBooking()
         //check booking status
         invoicePage.openInvoicePage()

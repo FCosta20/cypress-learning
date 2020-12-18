@@ -3,6 +3,7 @@ import {Given, When, Then, And} from "cypress-cucumber-preprocessor/steps"
 //variable for giving data from personalInfo fixture
 let login = {}
 
+//take data from personalInfo
 before(() => {
     cy.fixture('personalInfo').then((personalInfo) => {
         login = personalInfo;

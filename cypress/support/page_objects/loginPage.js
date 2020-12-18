@@ -1,6 +1,7 @@
 
 class LoginPage{
 
+  //fill in login form
     fillLogInForm(email, password){
       cy.contains('Email')
         .type(email)
@@ -8,6 +9,7 @@ class LoginPage{
         .type(password)
     }
 
+    //log in
     logIn(){
       cy.contains('button', 'Login')
         .click()
