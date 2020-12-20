@@ -36,11 +36,8 @@ When(`I search the flight from {string} to {string}`, (cityFrom, cityTo) => {
 })
 
 When('I book the first flight from the list', () => {
-    flightsPage.bookFirstFlight()
-})
-
-When('I confirm the booking with passenger data', () => {
     cy.fixture('testData').then(testData => {
+        flightsPage.bookFirstFlight()
         bookFlightPage.fillPassengerData(testData.passengerName, testData.passengerAge, testData.passengerPassportNumber)
         bookFlightPage.confirmTheBooking()
     })

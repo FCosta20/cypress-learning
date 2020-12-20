@@ -10,7 +10,6 @@ Feature: FlightFeature
       When I navigate to search flight form
       And I search the flight from "London" to "New York"
       And I book the first flight from the list
-      And I confirm the booking with passenger data
       Then Booking status should be "Unpaid"
       When I choose pay on arrival
       Then Booking status should be "Reserved"
