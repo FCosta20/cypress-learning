@@ -64,4 +64,24 @@ describe('Flight suite', () => {
             .should('contain', 'Reserved')
     })
 
+    // search the flight, check first airline checkbox in filter,
+    // then verify that flights in list contains only flights from airline what was checked
+    it('filter airlines should work correct', () => {
+
+        homePage.openFlightForm()
+
+        homePage.selectFlightCities(testData.cityFrom, testData.cityTo)
+
+        homePage.selectFlightDay(new Date(testData.flightDate))
+
+        homePage.searchTheFlight()
+
+        flightsPage.checkAirline(0).then(checkedAirlineName => {
+
+            flightsPage.getAirlineListNames().each(listedAirlineName => {
+                expect(checkedAirlineName).to.equal(listedAirlineName.text().trim())
+            })
+        })
+    })
+
 })

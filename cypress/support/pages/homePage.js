@@ -1,5 +1,69 @@
 class HomePage {
 
+    chooseCurrency(currencyCode) {
+        cy.get('.dropdown-currency #dropdownCurrency')
+            .click()
+        cy.get('.dropdown-currency')
+            .contains('.dropdown-item', currencyCode)
+            .click()
+    }
+
+    getFirstHotelPrice() {
+        return cy.contains('h2', 'Featured Hotels')
+            .parents('.section-title')
+            .next('#MenuHorizon28_01')
+            .find('.price .text-secondary')
+            .first()
+            .then(priceElem => {
+                return priceElem.text().trim()
+            })
+    }
+
+    getFirstFrightPrice() {
+        return cy.contains('h2', 'Featured Flights')
+            .parents('.section-title')
+            .next('div')
+            .find('figcaption .d-block')
+            .first()
+            .then(priceElem => {
+                return priceElem.text().trim()
+            })
+    }
+
+    getFirstTourPrice() {
+        return cy.contains('h2', 'Featured Tours')
+            .parents('.section-title')
+            .next('div')
+            .find('figcaption .text-secondary')
+            .first()
+            .then(priceElem => {
+                return priceElem.text().trim()
+            })
+    }
+
+    getFirstRentalPrice() {
+        return cy.contains('h2', 'Featured Rentals')
+            .parents('.section-title')
+            .next('div')
+            .find('figcaption .text-secondary')
+            .first()
+            .then(priceElem => {
+                return priceElem.text().trim()
+            })
+    }
+
+    getFirstBoatPrice() {
+        return cy.contains('h2', 'Featured Boats')
+            .parents('.section-title')
+            .next('div')
+            .find('figcaption .text-secondary')
+            .first()
+            .then(priceElem => {
+                return priceElem.text().trim()
+            })
+    }
+
+
     navigateToLoginPage() {
         cy.get('.dropdown-login #dropdownCurrency')
             .click()

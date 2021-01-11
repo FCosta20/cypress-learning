@@ -1,0 +1,14 @@
+[
+  {
+    "currencyCode": "USD",
+    "currencySymbol": "$"
+  },
+  {
+    "currencyCode": "EUR",
+    "currencySymbol": "€"
+  },
+  {
+    "currencyCode": "GBP",
+    "currencySymbol": "£"
+  }
+]
