@@ -1,3 +1,5 @@
+import {footer} from "../components/footer";
+
 class HomePage {
 
     chooseCurrency(currencyCode) {
@@ -5,6 +7,15 @@ class HomePage {
             .click()
         cy.get('.dropdown-currency')
             .contains('.dropdown-item', currencyCode)
+            .click()
+    }
+
+    chooseFirstHotel() {
+        cy.contains('h2', 'Featured Hotels')
+            .parents('.section-title')
+            .next('#MenuHorizon28_01')
+            .find('a')
+            .first()
             .click()
     }
 
@@ -269,6 +280,10 @@ class HomePage {
                 .find('.e10ccb475')
                 .last()
         })
+    }
+
+    getFooter() {
+        return footer
     }
 
 }

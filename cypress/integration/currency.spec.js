@@ -2,7 +2,7 @@
 
 import {homePage} from "../support/pages/homePage";
 
-describe('Flight suite', () => {
+describe('Currency suite', () => {
 
     let currencies = []
 

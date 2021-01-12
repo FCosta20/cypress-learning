@@ -5,5 +5,7 @@
   "flightDate": "March 24, 2021",
   "passengerName": "User2",
   "passengerAge": "22",
-  "passengerPassportNumber": "KR643864"
+  "passengerPassportNumber": "KR643864",
+  "contactSubject": "Test subject",
+  "contactMessage": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
 }
