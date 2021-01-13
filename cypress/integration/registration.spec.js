@@ -20,7 +20,8 @@ describe('Registration suite', () => {
 
     // fill all inputs with user data click 'Sign Up' and check that element with greeting text contains username
     it('should be registered', () => {
-        homePage.navigateToRegistrationPage()
+        homePage.getHeader()
+            .navigateToRegistrationPage()
 
         registrationPage.register(user.firstName, user.lastName, user.phoneNumber, user.email, user.password, user.password)
 
@@ -31,7 +32,8 @@ describe('Registration suite', () => {
     // fill all inputs with user data but with different passwords click 'Sign Up' and
     // check that error message contain 'Password not matching with confirm password'
     it('should not be registered with different passwords', () => {
-        homePage.navigateToRegistrationPage()
+        homePage.getHeader()
+            .navigateToRegistrationPage()
 
         registrationPage.register(user.firstName, user.lastName, user.phoneNumber, user.email, user.password, user.wrongPassword)
 

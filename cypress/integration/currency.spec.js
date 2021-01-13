@@ -21,7 +21,8 @@ describe('Currency suite', () => {
     it('currency code should have appropriate currency symbol in prices', () => {
 
         currencies.forEach(currency => {
-            homePage.chooseCurrency(currency.currencyCode)
+            homePage.getHeader()
+                .chooseCurrency(currency.currencyCode)
             cy.wait(1000)
 
             homePage.getFirstHotelPrice()

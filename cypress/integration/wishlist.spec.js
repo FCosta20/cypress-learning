@@ -27,14 +27,16 @@ describe('Flight suite', () => {
     });
 
     it('should be book a flight', () => {
-        homePage.navigateToLoginPage()
+        homePage.getHeader()
+            .navigateToLoginPage()
 
         loginPage.login(user.email, user.password)
 
         accountPage.getGreetingElement()
             .should('contain',  `Hi, ${user.firstName} ${user.lastName}`)
 
-        accountPage.navigateToHomePage()
+        accountPage.getHeader()
+            .navigateToHomePage()
 
         homePage.chooseFirstHotel()
 
@@ -46,7 +48,8 @@ describe('Flight suite', () => {
 
             hotelDetailPage.getWishListButtonText().should('contain', 'Remove from wishlist')
 
-            hotelDetailPage.navigateToAccountPage()
+            hotelDetailPage.getHeader()
+                .navigateToAccountPage()
 
             accountPage.openWishList()
 

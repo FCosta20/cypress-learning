@@ -16,27 +16,17 @@ class ContactUsPage {
             cy.wrap(body)
                 .find('#recaptcha-anchor')
                 .click()
-
-            cy.wait(2000)
-
-            // cy.get('[name="submit_contact"]')
-            //     .click()
         })
     }
 
     getCaptchaForm() {
-        return cy.get('iframe[title="recaptcha challenge"]')
+        // cy.wait(2000)
+        return cy.get('iframe[title="recaptcha challenge"]', {timeout: 3000})
             .then(iframe => {
                 const body = iframe.contents().find('body')
 
                 return cy.wrap(body).find('#rc-imageselect')
             })
-    }
-
-    getSuccessMessage() {
-        return cy.get('.alert-success i').then(messageElem => {
-            return messageElem.text().trim()
-        })
     }
 
 }

@@ -1,8 +1,9 @@
+import {header} from "../components/header";
+
 class AccountPage {
 
-    navigateToHomePage() {
-        cy.get('a[title="home"]')
-            .click()
+    getHeader() {
+        return header
     }
 
     getGreetingElement() {

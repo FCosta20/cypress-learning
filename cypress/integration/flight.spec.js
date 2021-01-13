@@ -31,14 +31,16 @@ describe('Flight suite', () => {
     // check that booking status Unpaid then click and confirm pay on arrival
     // and check that booking status was changed to Reserved
     it('should be book a flight', () => {
-        homePage.navigateToLoginPage()
+        homePage.getHeader()
+            .navigateToLoginPage()
 
         loginPage.login(user.email, user.password)
 
         accountPage.getGreetingElement()
             .should('contain',  `Hi, ${user.firstName} ${user.lastName}`)
 
-        accountPage.navigateToHomePage()
+        accountPage.getHeader()
+            .navigateToHomePage()
 
         homePage.openFlightForm()
 

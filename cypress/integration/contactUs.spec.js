@@ -29,8 +29,6 @@ describe('Contact us suite', () => {
         contactUsPage.fillData(user.firstName, user.email, testData.contactSubject, testData.contactMessage)
 
         contactUsPage.getCaptchaForm().should('be.visible')
-
-        //contactUsPage.getSuccessMessage().should('contain', 'Message Sent Successfully')
     })
 
 })

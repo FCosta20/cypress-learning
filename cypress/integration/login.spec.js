@@ -20,7 +20,8 @@ describe('Login suite', () => {
 
     // fill email and password with user data click 'Login' and check that element with greeting text contains username
     it('should be authorized', () => {
-        homePage.navigateToLoginPage()
+        homePage.getHeader()
+            .navigateToLoginPage()
 
         loginPage.login(user.email, user.password)
 
@@ -30,7 +31,8 @@ describe('Login suite', () => {
 
     // fill email and wrong password and check that error message contain 'Invalid Email or Password'
     it('should not be authorized with wrong password', () => {
-        homePage.navigateToLoginPage()
+        homePage.getHeader()
+            .navigateToLoginPage()
 
         loginPage.login(user.email, user.wrongPassword)
 

@@ -8,7 +8,8 @@ Given('I am on home page', () => {
 })
 
 When('I navigate to sign up page', () => {
-    homePage.navigateToRegistrationPage()
+    homePage.getHeader()
+        .navigateToRegistrationPage()
 })
 
 When('I register user with user data', () => {

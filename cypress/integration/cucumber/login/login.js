@@ -8,7 +8,8 @@ Given('I am on home page', () => {
 })
 
 When('I navigate to login page', () => {
-    homePage.navigateToLoginPage()
+    homePage.getHeader()
+        .navigateToLoginPage()
 })
 
 When('I login with correct credentials', () => {

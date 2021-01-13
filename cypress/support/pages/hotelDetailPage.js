@@ -1,10 +1,9 @@
+import {header} from "../components/header";
+
 class HotelDetailPage {
 
-    navigateToAccountPage() {
-        cy.get('.dropdown-login #dropdownCurrency')
-            .click()
-        cy.contains('Account')
-            .click()
+    getHeader() {
+        return header
     }
 
     getHotelName() {

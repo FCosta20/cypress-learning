@@ -10,18 +10,21 @@ Given('I am on home page', () => {
 })
 
 When('I click My Account and Login link', () => {
-    homePage.navigateToLoginPage()
+    homePage.getHeader()
+        .navigateToLoginPage()
 })
 
 When('I login with correct credentials', () => {
     cy.fixture('user').then(user => {
-        homePage.navigateToLoginPage()
+        homePage.getHeader()
+            .navigateToLoginPage()
         loginPage.login(user.email, user.password)
     });
 })
 
 When('I navigate to search flight form', () => {
-    accountPage.navigateToHomePage()
+    accountPage.getHeader()
+        .navigateToHomePage()
     homePage.clickFlightLink()
 })
 

@@ -24,25 +24,34 @@ describe('Chat suite', () => {
     // click show more to male visible all user data check that chat have valid user credentials,
     // type the message and send, check that message sent with label 'Delivered'
     it('should be sent a message to chat', () => {
-        homePage.startChatWithUser(user.firstName, user.phoneNumber, user.email)
+        homePage.getChat()
+            .startChatWithUser(user.firstName, user.phoneNumber, user.email)
 
-        homePage.showMoreInfoAboutUserInChat()
+        homePage.getChat()
+            .showMoreInfoAboutUserInChat()
 
-        homePage.getChatUserName()
+        homePage.getChat()
+            .getChatUserName()
             .should('contain', user.firstName)
-        homePage.getChatUserWhatsAppNumber()
+        homePage.getChat()
+            .getChatUserWhatsAppNumber()
             .should('contain', user.phoneNumber)
-        homePage.getChatUserEmail()
+        homePage.getChat()
+            .getChatUserEmail()
             .should('contain', user.email)
 
-        homePage.sendMessageToChat(testData.message)
+        homePage.getChat()
+            .sendMessageToChat(testData.message)
 
-        homePage.getLastSentMessageFromChat()
+        homePage.getChat()
+            .getLastSentMessageFromChat()
             .should('contain', testData.message)
-        homePage.getLastSentMessageStatusFromChat()
+        homePage.getChat()
+            .getLastSentMessageStatusFromChat()
             .should('contain', 'Delivered')
 
-        homePage.closeTheChat(true)
+        homePage.getChat()
+            .closeTheChat(true)
     })
 
 })
