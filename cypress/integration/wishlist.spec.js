@@ -3,9 +3,6 @@
 import {homePage} from "../support/pages/homePage";
 import {loginPage} from "../support/pages/loginPage";
 import {accountPage} from "../support/pages/accountPage";
-import {flightsPage} from "../support/pages/flightsPage";
-import {bookFlightPage} from "../support/pages/bookFlightPage";
-import {invoicePage} from "../support/pages/invoicePage";
 import {hotelDetailPage} from "../support/pages/hotelDetailPage";
 
 describe('Flight suite', () => {
@@ -26,7 +23,7 @@ describe('Flight suite', () => {
         cy.openHomePage();
     });
 
-    it('should be book a flight', () => {
+    it('First hotel should be added to wishlist', () => {
         homePage.getHeader()
             .navigateToLoginPage()
 
@@ -42,18 +39,21 @@ describe('Flight suite', () => {
 
         hotelDetailPage.getHotelName().then(hotelName => {
 
-            hotelDetailPage.getWishListButtonText().should('contain', 'Add to wishlist')
+            hotelDetailPage.getWishListButtonText()
+                .should('contain', 'Add to wishlist')
 
             hotelDetailPage.addToWishlist()
 
-            hotelDetailPage.getWishListButtonText().should('contain', 'Remove from wishlist')
+            hotelDetailPage.getWishListButtonText()
+                .should('contain', 'Remove from wishlist')
 
             hotelDetailPage.getHeader()
                 .navigateToAccountPage()
 
             accountPage.openWishList()
 
-            accountPage.getHotelTextElement(hotelName).should('be.visible')
+            accountPage.getHotelTextElement(hotelName)
+                .should('be.visible')
         })
     })
 

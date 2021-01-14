@@ -18,8 +18,7 @@ describe('Currency suite', () => {
 
     // verify that chosen currency code in header should have appropriate currency symbol in prices
     // to recommended hotel, flights etc...
-    it('currency code should have appropriate currency symbol in prices', () => {
-
+    it('Currency code should have appropriate currency symbol in prices', () => {
         currencies.forEach(currency => {
             homePage.getHeader()
                 .chooseCurrency(currency.currencyCode)

@@ -22,10 +22,14 @@ When('I login with correct credentials', () => {
     });
 })
 
+When('I open flight form', () => {
+    homePage.openFlightForm()
+})
+
 When('I navigate to search flight form', () => {
     accountPage.getHeader()
         .navigateToHomePage()
-    homePage.clickFlightLink()
+    homePage.openFlightForm()
 })
 
 When(`I search the flight from {string} to {string}`, (cityFrom, cityTo) => {
@@ -35,6 +39,20 @@ When(`I search the flight from {string} to {string}`, (cityFrom, cityTo) => {
         homePage.selectFlightDay(new Date(testData.flightDate))
         homePage.addAdultToFlight()
         homePage.searchTheFlight()
+    })
+})
+
+When('I filter flights by the first airline', () => {
+    flightsPage.checkAirline(0)
+        .as('checkedAirlineName')
+})
+
+Then('Flight list should be only from chosen airline', () => {
+    cy.get('@checkedAirlineName').then(checkedAirlineName => {
+
+        flightsPage.getAirlineListNames().each(listedAirlineName => {
+            expect(checkedAirlineName).to.equal(listedAirlineName.text().trim())
+        })
     })
 })
 

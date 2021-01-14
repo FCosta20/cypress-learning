@@ -68,7 +68,7 @@ describe('Flight suite', () => {
 
     // search the flight, check first airline checkbox in filter,
     // then verify that flights in list contains only flights from airline what was checked
-    it('filter airlines should work correct', () => {
+    it('Flight list should be filtered by airline', () => {
 
         homePage.openFlightForm()
 

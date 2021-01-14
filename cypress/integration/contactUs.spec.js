@@ -21,14 +21,14 @@ describe('Contact us suite', () => {
         cy.openHomePage();
     });
 
-    it('user can not contact us without verifying captcha', () => {
-
+    it('User can not contact us without verifying captcha', () => {
         homePage.getFooter()
             .navigateToContactUsPage()
 
         contactUsPage.fillData(user.firstName, user.email, testData.contactSubject, testData.contactMessage)
 
-        contactUsPage.getCaptchaForm().should('be.visible')
+        contactUsPage.getCaptchaForm()
+            .should('be.visible')
     })
 
 })
