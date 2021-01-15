@@ -12,7 +12,10 @@
     "registration_tests": "npx cypress run --spec 'cypress/integration/registration.spec.js' --record --key 9d361d8e-01aa-41be-8f0f-3b36cf02d30d",
     "login_tests": "npx cypress run --spec 'cypress/integration/login.spec.js' --record --key 9d361d8e-01aa-41be-8f0f-3b36cf02d30d",
     "chat_tests": "npx cypress run --spec 'cypress/integration/chat.spec.js' --record --key 9d361d8e-01aa-41be-8f0f-3b36cf02d30d",
-    "flight_tests": "npx cypress run --spec 'cypress/integration/flight.spec.js' --record --key 9d361d8e-01aa-41be-8f0f-3b36cf02d30d"
+    "flight_tests": "npx cypress run --spec 'cypress/integration/flight.spec.js' --record --key 9d361d8e-01aa-41be-8f0f-3b36cf02d30d",
+    "contact_us_tests": "npx cypress run --spec 'cypress/integration/contactUs.spec.js' --record --key 9d361d8e-01aa-41be-8f0f-3b36cf02d30d",
+    "wishlist_tests": "npx cypress run --spec 'cypress/integration/wishlist.spec.js' --record --key 9d361d8e-01aa-41be-8f0f-3b36cf02d30d",
+    "currency_tests": "npx cypress run --spec 'cypress/integration/currency.spec.js' --record --key 9d361d8e-01aa-41be-8f0f-3b36cf02d30d"
   },
   "pre-commit": [
     "lint"

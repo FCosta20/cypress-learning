@@ -5,7 +5,7 @@ import {loginPage} from "../support/pages/loginPage";
 import {accountPage} from "../support/pages/accountPage";
 import {hotelDetailPage} from "../support/pages/hotelDetailPage";
 
-describe('Flight suite', () => {
+describe('Wishlist suite', () => {
 
     let user = {}
     let testData = {}
