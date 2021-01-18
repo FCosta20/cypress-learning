@@ -21,7 +21,9 @@
     "lint"
   ],
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "cypress-plugin-snapshots": "^1.4.4"
+  },
   "devDependencies": {
     "cypress": "^5.6.0",
     "cypress-cucumber-preprocessor": "^4.0.0"

@@ -3,5 +3,16 @@
   "viewportHeight": 1080,
   "viewportWidth": 1920,
   "chromeWebSecurity": false,
-  "projectId": "mwt5zv"
+  "projectId": "mwt5zv",
+  "ignoreTestFiles": [
+    "**/__snapshots__/*",
+    "**/__image_snapshots__/*"
+  ],
+  "env": {
+    "cypress-plugin-snapshots": {
+      "imageConfig": {
+        "threshold": 0.01
+      }
+    }
+  }
 }

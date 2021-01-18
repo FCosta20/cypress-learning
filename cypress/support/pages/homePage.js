@@ -16,6 +16,10 @@ class HomePage {
         return footer
     }
 
+    getFlightForm() {
+        return cy.get('.menu-horizontal-wrapper-02')
+    }
+
     chooseFirstHotel() {
         cy.contains('h2', 'Featured Hotels')
             .parents('.section-title')
